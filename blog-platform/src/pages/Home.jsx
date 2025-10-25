@@ -7,4 +7,4 @@ export default function Home() {
             <p>This is where things will be posted.</p>
         </main>
     );
-}
+}clearInterval
