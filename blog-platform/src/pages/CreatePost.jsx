@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { posts } from "../data/posts";
 
@@ -48,8 +48,8 @@ export default function CreatePost() {
             {/* code for title ends */}
             
             {/* code for content starts */}
-            <div style={{ marginBottom: "15px "}}>
-                <lable>Content: </lable>
+            <div style={{ marginBottom: "15px" }}>
+                <label>Content: </label>
                 <br />
                 <textarea 
                     value={content}
