@@ -57,7 +57,7 @@ export default function EditPost() {
                     <label>Title: </label>
                     <input
                         type="text"
-                        value={content}
+                        value={title}
                         onChange={(e) => setTitle(e.target.value)}
                         required
                         style={{
@@ -86,19 +86,6 @@ export default function EditPost() {
                         }}
                     />
                 </div>
-
-                <button 
-                    onClick={() => navigate(`/post/${numericId}/edit`)}
-                    style={{
-                        marginRight: "10px",
-                        padding: "8px 16px",
-                        border: "none",
-                        backgroundColor: "#007bff",
-                        color: "#fff",
-                        cursor: "pointer",
-                    }}
-                >
-                </button>
 
                 {/* Submit button */}
                 <button

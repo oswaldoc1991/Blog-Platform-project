@@ -65,6 +65,19 @@ export default function BlogPost() {
                 </button>
 
                 <button
+                    onClick={() => navigate(`/post/${post.id}/edit`)}
+                    style={{
+                        marginRight: "10px",
+                        padding: "8px 16px",
+                        border: "1px solid #333",
+                        backgroundColor: "#fff",
+                        cursor: "pointer",
+                    }}
+                >
+                    Edit Post
+                </button>
+                
+                <button
                     onClick={handleDelete}
                     style={{
                         padding: "8px 16px",
