@@ -1,8 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { posts } from "../data/posts";
 
-export default function Home() {
+export default function Home({ posts = []}) {
     return (
         <main style={{ padding: "20px " }}>
             <h2>Welcome to The Blog</h2>
@@ -28,4 +27,4 @@ export default function Home() {
             </ul>
         </main>
     );
-}clearInterval
+}

@@ -20,7 +20,7 @@ export default function Navbar() {
                 <Link to="/create-post" style={{ margin: "0 10px", color: "#fff" }}>
                     Create
                 </Link>
-                <Link to="/post/1" style={{color: "#fff"}}>
+                <Link to="/post/1" style={{ margin: "0 10px", color: "#fff"  }}>
                     Sample Blog Post
                 </Link>
             </div>

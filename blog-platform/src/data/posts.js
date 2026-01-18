@@ -1,4 +1,4 @@
-export const posts = [
+export const defaultPosts = [
     {
         id: 1,
         title: "First Post",
@@ -35,10 +35,15 @@ export const posts = [
         content: "This will have the same meaning as the other posts that where made prior to this one",
     },
 
-    {
+     {
         id: 7, 
-        title: "Seventh Post ",
-        content: "This will be the final post that would be used for testing and demonstration purposes.",
+        title: "Seventh Post",
+        content: "This is the second to last post that would be used for testing and for demonstration only",
     },
 
+    {
+        id: 8, 
+        title: "Eighth Post ",
+        content: "This will be the final post that would be used for testing and demonstration purposes.",
+    },
 ];

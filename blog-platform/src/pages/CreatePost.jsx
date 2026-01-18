@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { posts } from "../data/posts";
 
 export default function CreatePost() {
    const [title, setTitle] = useState("");
@@ -9,18 +8,16 @@ export default function CreatePost() {
 
    const handleSubmit = (e) => {
         e.preventDefault();
-        
-        // this will create a new post 
+
+        const nextID = posts.length ? Math.max(...posts.map((p) => p.id)) + 1 : 1;
+
         const newPost = {
-            id: posts.Length + 1,
+            id: nextID,
             title,
             content,
         };
 
-        // this will add the new post to the posts array
-        posts.push(newPost);
-
-        // this will help go back to the home page
+        setPosts([newPost, ...posts]);
         navigate("/");
    };
 

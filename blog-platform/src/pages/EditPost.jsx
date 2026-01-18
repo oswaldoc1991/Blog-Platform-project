@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { posts } from "../data/posts";
 
-export default function EditPost() {
+export default function EditPost({ posts, setPosts }) {
     const { id } = useParams();
     const navigate = useNavigate();
 
@@ -34,15 +33,8 @@ export default function EditPost() {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        // finding the indext in the posts array and update the users post
-        const index = posts.findIndex((p) => p.id === numericId);
-        if (index !== -1) {
-            posts[index] = {
-                ...posts[index],
-                title,
-                content,
-            };
-        }
+        setPosts((prevPosts) => 
+            prevPosts.map((p) => p.id === numericId ? { ...p, title, content } : p));
 
         alert("Post updated successfully");
         navigate(`/post/${numericId}`);

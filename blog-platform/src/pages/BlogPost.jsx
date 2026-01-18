@@ -1,6 +1,5 @@
 import React from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { posts } from "../data/posts";
 
 export default function BlogPost() {
     const { id } = useParams();
@@ -34,7 +33,7 @@ export default function BlogPost() {
         );
         if (!confirmDelete) return;
 
-        // 🔹 Use the posts array, not post
+        // Use the posts array, not post
         const index = posts.findIndex((p) => p.id === numericId);
 
         if (index !== -1) {
