@@ -1,7 +1,7 @@
 import React from "react";
 import { useParams, useNavigate } from "react-router-dom";
 
-export default function BlogPost() {
+export default function BlogPost({ posts, setPosts }) {
     const { id } = useParams();
     const navigate = useNavigate();
 

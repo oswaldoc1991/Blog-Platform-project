@@ -1,9 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-export default function Home({ posts = []}) {
+export default function Home({ posts}) {
     return (
-        <main style={{ padding: "20px " }}>
+        <main style={{ padding: "18px " }}>
             <h2>Welcome to The Blog</h2>
             <ul style={{ listStyle: "none", padding: 0 }}>
                 {posts.map((post) => (

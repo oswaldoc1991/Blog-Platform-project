@@ -21,7 +21,7 @@ export default function Navbar() {
                     Create
                 </Link>
                 <Link to="/post/1" style={{ margin: "0 10px", color: "#fff"  }}>
-                    Sample Blog Post
+                    Blogs
                 </Link>
             </div>
         </nav>
