@@ -10,23 +10,7 @@ import EditPost from "./pages/EditPost.jsx";
 import { defaultPosts } from "./data/posts";
 
 function App() {
-    const [posts, setPosts] = useState([]);
-
-    // loading from the local storage on first render
-    useEffect(() => {
-        const savedPosts = localStorage.getItem("posts");
-
-        if (savedPosts) {
-                setPosts(JSON.parse(savedPosts));
-            } else {
-                setPosts(defaultPosts); // defaultPosts importated fro data/posts.js
-            }
-        }, []);
-
-        // this will save local storage whenever posts is being changed
-        useEffect(() => {
-            localStorage.setItem("posts", JSON.stringify(posts));
-        }, [posts]);
+    const [posts, setPosts] = useState(defaultPosts);
 
     return(
         <div>
