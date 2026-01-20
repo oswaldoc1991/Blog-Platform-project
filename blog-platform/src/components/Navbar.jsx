@@ -1,28 +1,71 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
+
+const containerStyle = {
+    maxWidth: "900px",
+    margin: "0 auto",
+    padding: "10px 20px",
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center",
+}
+
+const navStyle ={
+    backgroundColor: "#333",
+    color: "#fff",
+}
+
+const linkStyle ={
+    marginLeft: "10px",
+    color: "#fff",
+    textDecoration: "none",
+    fontWeight: "500",
+}
 
 export default function Navbar() {
     return (
-        <nav
-            style={{
-                padding: "10px 20px",
-                backgroundColor: "#333",
-                color: "#fff",
-                display: "flex",
-                justifyContent: "space-between",
-            }}
-        >
-            <h1>My Blog</h1>
-            <div>
-                <Link to="/" style={{ margin: "0 10px", color: "#fff" }}>
-                Home
+        <nav style={navStyle}>
+            <div style={containerStyle}>
+                <Link
+                    to="/" 
+                    style={{ color: "#fff", textDecoration: "none"}}>
+                    <h1>My Blog</h1>
                 </Link>
-                <Link to="/create-post" style={{ margin: "0 10px", color: "#fff" }}>
-                    Create
-                </Link>
-                <Link to="/post/1" style={{ margin: "0 10px", color: "#fff"  }}>
-                    Blogs
-                </Link>
+
+                    <div>
+                    {/* home */}
+                    <NavLink
+                        to="/"
+                        style={({ isActive}) => ({
+                            ...linkStyle,
+                            textDecoration: isActive ? "underline" : "none",
+                        })}
+                        >
+                        Home
+                    </NavLink>
+
+                    {/* create post */}
+                    <NavLink
+                    to="/create-post"
+                        style={({ isActive}) => ({
+                            ...linkStyle,
+                            textDecoration: isActive ? "underline" : "none",
+                        })}
+                        >
+                        Create
+                    </NavLink>
+
+                    {/* blogs */}
+                    <NavLink
+                        to="/"
+                        style={({ isActive}) => ({
+                            ...linkStyle,
+                            textDecoration: isActive ? "underline" : "none",
+                        })}
+                        >
+                        Blogs
+                    </NavLink>
+                </div>
             </div>
         </nav>
     );
