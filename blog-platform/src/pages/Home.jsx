@@ -2,6 +2,25 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 export default function Home({ posts }) {
+
+    const pageTitleStyle = {
+        marginBottom: "20px",
+        fontSize: "24px",
+        fontWeight: "700px",
+        textAligh: "center",
+    };
+
+    const listItemStyle ={
+        marginBottom: "25px",
+    };
+
+    const excerptStyle = {
+        marginTop: "10px",
+        lineHight: "1.6",
+        color: "#444",
+        fontSize: "15px",
+    };
+    
     return (
         <main
             style={{
