@@ -6,6 +6,8 @@ import Home from "./pages/Home.jsx";
 import CreatePost from "./pages/CreatePost.jsx";
 import BlogPost from "./pages/BlogPost.jsx";
 import EditPost from "./pages/EditPost.jsx";
+import Blogs from "./pages/Blogs.jsx";
+
 
 import { defaultPosts } from "./data/posts";
 
@@ -16,8 +18,9 @@ function App() {
         <div>
             <Navbar />
             <Routes>
-                <Route path="/" element={<Home posts={posts} />} />
-                <Route path="/create-post" element={<CreatePost posts={posts} setPosts={setPosts} />}/>
+                <Route path="/home" element={<Home posts={posts} />} />
+                <Route path="/blogs" element={<Blogs posts={posts} />} />
+                <Route path="/create-post" element={<CreatePost posts={posts} setPosts={setPosts} />} />
                 <Route path="/post/:id" element={<BlogPost posts={posts} setPosts={setPosts} />} />
                 <Route path="/post/:id/edit" element={<EditPost posts={posts} setPosts={setPosts} />} />
             </Routes>

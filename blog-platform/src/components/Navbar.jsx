@@ -35,7 +35,7 @@ export default function Navbar() {
                     <div>
                     {/* home */}
                     <NavLink
-                        to="/"
+                        to="/Home"
                         style={({ isActive}) => ({
                             ...linkStyle,
                             textDecoration: isActive ? "underline" : "none",
@@ -57,7 +57,7 @@ export default function Navbar() {
 
                     {/* blogs */}
                     <NavLink
-                        to="/"
+                        to="/blogs"
                         style={({ isActive}) => ({
                             ...linkStyle,
                             textDecoration: isActive ? "underline" : "none",
