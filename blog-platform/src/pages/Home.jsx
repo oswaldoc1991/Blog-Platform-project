@@ -32,6 +32,20 @@ export default function Home() {
                             Create Posts
                     </button>
                 </div>
+                
+                <div style={{ marginTop: "20px "}}>
+                    <button
+                        onClick={() => navigate("/blogs")}
+                        style={{ 
+                            marginRight: "10px",
+                            padding: "10px 16px",
+                            background: "#333",
+                            color: "#FFF",
+                        }}
+                        >
+                            View Blogs
+                    </button>
+                </div>
             </section>
         </main>
     )
