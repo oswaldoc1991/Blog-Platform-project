@@ -14,10 +14,8 @@ export default function Home() {
             }}
             >
                 <h1>Welcome to the Blog Platform</h1>
-                <p>
-                    This is a simple blog platform where you can create, edit, and manage.
-                </p>
-                <p>your blog posts with ease. Get started by browsing the latest posts or creating your own!</p>
+                <p>This is a simple blog platform where you can create, edit, and manage. With no problem at all</p>
+                <p>Create your blog posts with ease. Get started by browsing the latest posts or creating your own!</p>
 
                 <div style={{ marginTop: "20px" }}>
                     <button 
