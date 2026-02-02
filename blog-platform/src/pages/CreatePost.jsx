@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import PageCounter from "../components/PageCounter.jsx";
 
 export default function CreatePost({ posts, setPosts }) {
    const [title, setTitle] = useState("");

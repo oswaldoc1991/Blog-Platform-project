@@ -1,11 +1,12 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
+import PageCounter from "../components/PageCounter.jsx";
 
 export default function Home() {
     const navigate = useNavigate();
 
     return (
-        <main style={{ maxWidth: "900px", margin: "0 auto", padding: "20px" }}>
+        <PageCounter>
             <section 
             style={{
                 background: "#f8f9fa",
@@ -17,7 +18,7 @@ export default function Home() {
                 <p>This is a simple blog platform where you can create, edit, and manage. With no problem at all</p>
                 <p>Create your blog posts with ease. Get started by browsing the latest posts or creating your own!</p>
 
-                <div style={{ marginTop: "20px" }}>
+                <div style={{ marginTop: "20px", display: "flex", gap: "12px" }}>
                     <button 
                         onClick={() => navigate("/create-post")}
                         style={{
@@ -43,6 +44,6 @@ export default function Home() {
                     </button>
                 </div>
             </section>
-        </main>
+        </PageCounter>
     )
 }

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
+import PageCounter from "../components/PageCounter.jsx";
 
 export default function EditPost({ posts, setPosts }) {
     const { id } = useParams();
@@ -41,8 +42,8 @@ export default function EditPost({ posts, setPosts }) {
     };
 
     return (
-        <main style={{ padding: "20px" }}>
-            <h1>Edit Post</h1>
+        <PageCounter>
+             <h1>Edit Post</h1>
             <form onSubmit={handleSubmit}>
                 {/* The title */}
                 <div style={{ marginBottom: "10px" }}>
@@ -107,6 +108,6 @@ export default function EditPost({ posts, setPosts }) {
                     Cancel
                 </button>
             </form>
-        </main>
+        </PageCounter>
     );
 }

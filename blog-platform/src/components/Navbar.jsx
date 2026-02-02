@@ -29,7 +29,7 @@ export default function Navbar() {
                 <Link
                     to="/" 
                     style={{ color: "#fff", textDecoration: "none"}}>
-                    <h1>My Blog</h1>
+                    <h1>The Blog</h1>
                 </Link>
 
                     <div>

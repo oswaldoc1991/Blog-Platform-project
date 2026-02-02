@@ -1,13 +1,15 @@
 import React from "react";
 import { Link }  from "react-router-dom";
+import PageCounter from "../components/PageCounter.jsx";
 
 export default function Blogs ({ posts = [] }) {
     return (
-        <main style={{ maxWidth: "900px", margin: "0 auto", padding: "20px" }}>
+        <PageCounter>
             <h2>Latest Posts ({posts.length})</h2>
 
            <ul style={{ listStyleType: "none", padding: 0 }}>
             {posts.map((post)  => {
+                
                 const preview = (post.content ?? "").substring(0,80);
 
                 return (
@@ -28,10 +30,11 @@ export default function Blogs ({ posts = [] }) {
                             {preview}
                             {post.content ? "..." : ""}
                         </p>
+                        <hr />
                     </li>
                 );
             })}
            </ul>
-        </main>
+        </PageCounter>
     );
 }
