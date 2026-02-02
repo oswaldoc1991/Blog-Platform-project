@@ -35,13 +35,13 @@ export default function Navbar() {
                     <div>
                     {/* home */}
                     <NavLink
-                        to="/Home"
+                        to="/About"
                         style={({ isActive}) => ({
                             ...linkStyle,
                             textDecoration: isActive ? "underline" : "none",
                         })}
                         >
-                        Home
+                        About
                     </NavLink>
 
                     {/* create post */}
