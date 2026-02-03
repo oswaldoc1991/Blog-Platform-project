@@ -1,14 +1,35 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link }  from "react-router-dom";
-import PageCounter from "../components/PageCounter.jsx";
 
 export default function Blogs ({ posts = [] }) {
+
+    const [ search, setSearch ] = useState("");
+
+const filteredPosts = posts.filter((post) => 
+    post.title.toLowerCase().includes(search.toLowerCase()) ||
+    post.content.toLowerCase().includes(search.toLowerCase())
+);
     return (
-        <PageCounter>
-            <h2>Latest Posts ({posts.length})</h2>
+        <main style={{ maxWidth: "900px", margin: "0 auto", padding: "20px" }}>
+            <h2>Latest Posts ({filteredPosts.length})</h2>
+
+            <input 
+                type="text"
+                placeholder="Search posts here"
+                value={search}
+                onChange={(e) => setSearch(e.target.value)}
+                style={{
+                    width: "100%",
+                    padding: "16px",
+                    marginBottom: "20px",
+                    fontSize: "16px",
+                    borderRadius: "6px",
+                    border: "1px solid #ccc",
+                }}
+                />
 
            <ul style={{ listStyleType: "none", padding: 0 }}>
-            {posts.map((post)  => {
+            {filteredPosts.map((post)  => {
                 
                 const preview = (post.content ?? "").substring(0,80);
 
@@ -35,6 +56,8 @@ export default function Blogs ({ posts = [] }) {
                 );
             })}
            </ul>
-        </PageCounter>
+
+           {filteredPosts.length === 0 && <p>No posts found.</p>}
+        </main>
     );
 }
