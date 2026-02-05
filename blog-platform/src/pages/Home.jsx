@@ -5,8 +5,8 @@ export default function Home() {
     const navigate = useNavigate();
 
     return (
-        <PageCounter>
-            <section 
+        <main style={{ maxWidth: "900px", margin: "0 auto", padding: "20px" }}>
+             <section 
             style={{
                 background: "#f8f9fa",
                 padding : "30px",
@@ -43,6 +43,6 @@ export default function Home() {
                     </button>
                 </div>
             </section>
-        </PageCounter>
+        </main>
     )
 }
