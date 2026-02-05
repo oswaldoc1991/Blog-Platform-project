@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import PageCounter from "../components/PageCounter.jsx";
 
 export default function EditPost({ posts, setPosts }) {
     const { id } = useParams();
