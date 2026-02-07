@@ -14,6 +14,12 @@ export default function Blogs ({ posts = [] }) {
         }
     });
     
+    const handleClearFilters = () => {
+        setSearch("");
+        setSortOrder("New");
+        setFavoritesOnly(false);
+    };
+
     useEffect(() => {
         localStorage.setItem("favorites", JSON.stringify(favorites));
     }, [favorites]);
@@ -52,6 +58,7 @@ export default function Blogs ({ posts = [] }) {
                     gap: "12px",
                     alignItems: "center",
                     marginBottom: "20px",
+                    flexWrap: "wrap",
                 }}
             >
                 <input
@@ -59,7 +66,7 @@ export default function Blogs ({ posts = [] }) {
                     placeholder="Search posts..."
                     value={search}
                     onChange={(e) => setSearch(e.target.value)}
-                    style={{ flex: 1, padding: "8px" }}
+                    style={{ flex: 1, padding: "8px", minWidth: "220px"}}
                 />
                 
                 <select
@@ -87,6 +94,23 @@ export default function Blogs ({ posts = [] }) {
                 </label>
             </div>
 
+            <button 
+                type="button"
+                onClick={handleClearFilters}
+                disabled={!search && sortOrder === "New" && !showFavorites}
+                style={{
+                    padding: "10px 14px",
+                    borderRadius: "6px",
+                    border: "1px solid #ccc",
+                    background: "#f5f5f5",
+                    cursor: "pointer",
+                    fontWeight: "500",
+                    opacity: !search && sortOrder === "New" && !showFavorites ? 0.6 : 1,
+                }}
+                >
+                Clear Favorites
+            </button>
+
             <ul style={{ listStyleType: "none", padding: 0 }}>
                 {sortedPosts.map((post) => {
                     const preview = (post.content || "").substring(0, 80);
@@ -95,31 +119,33 @@ export default function Blogs ({ posts = [] }) {
 
                     return (
                         <li key={post.id} style={{ marginBottom: "25px" }}>
-                            <Link
-                                to={`/post/${post.id}`}
-                                style={{
-                                    fontSize: "18px",
-                                    fontWeight: "600",
-                                    color: "#007bff",
-                                    textDecoration: "none",
-                                }}
-                            >
-                                {post.title}
-                            </Link>
-
-                            <button
-                                type="button"
-                                onClick={() => toggleFavorite(post.id)}
-                                style={{
-                                    padding: "6px 10px",
-                                    borderRadius: "6px",
-                                    border: "1px solid #ccc",
-                                    background: "#fff",
-                                    cursor: "pointer",
-                                }}
+                            <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
+                                <Link
+                                    to={`/post/${post.id}`}
+                                    style={{
+                                        fontSize: "18px",
+                                        fontWeight: "600",
+                                        color: "#007bff",
+                                        textDecoration: "none",
+                                    }}
                                 >
-                                {isFav ? "Saved" : "Save"}
-                            </button>
+                                    {post.title}
+                                </Link>
+
+                                <button
+                                    type="button"
+                                    onClick={() => toggleFavorite(post.id)}
+                                    style={{
+                                        padding: "6px 10px",
+                                        borderRadius: "6px",
+                                        border: "1px solid #ccc",
+                                        background: isFav ? "#e6f4ea" : "#fff",
+                                        cursor: "pointer",
+                                    }}
+                                    >
+                                    {isFav ? "Saved" : "Save"}
+                                </button>
+                            </div>
 
                             <p style={{ marginTop: "8px" }}>
                                 {preview}
@@ -132,7 +158,7 @@ export default function Blogs ({ posts = [] }) {
                 })}
             </ul>
 
-            {sortedPosts.length == 0 && <p>No posts available.</p>}
+            {sortedPosts.length == 0 && (<p>No posts available.</p>)}
         </main>
-    )
+    );
 }
