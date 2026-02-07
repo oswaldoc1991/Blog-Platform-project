@@ -1,16 +1,39 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link }  from "react-router-dom";
 
 export default function Blogs ({ posts = [] }) {
     const [search, setSearch] = useState("");
     const [sortOrder, setSortOrder] = useState("New");
+    const [showFavorites, setFavoritesOnly] = useState(false);
+    const [favorites, setFavorites] = useState(() => {
+        try{
+            const saved = localStorage.getItem("favorites");
+            return saved ? JSON.parse(saved) : [];
+        } catch {
+            return [];
+        }
+    });
+    
+    useEffect(() => {
+        localStorage.setItem("favorites", JSON.stringify(favorites));
+    }, [favorites]);
+
+    const toggleFavorite = (id) => {
+        setFavorites((prev) =>
+        prev.includes(id) ? prev.filter((x) => x !== id) : [...prev, id]
+        );
+    };
+
+    const query = search.toLowerCase();
 
     const filteredPosts = posts.filter((post) => {
-        const title = (post.title ?? "").toLocaleLowerCase();
-        const content = (post.content ?? "").toLocaleLowerCase();
-        const query = search.toLocaleLowerCase();
+        const title = (post.title ?? "").toLowerCase();
+        const content = (post.content ?? "").toLowerCase();
 
-        return title.includes(query) || content.includes(query);
+        const matchesSearch = title.includes(query) || content.includes(query);
+        const matchFavorites = !showFavorites || favorites.includes(post.id);
+
+        return matchesSearch && matchFavorites;
     });
 
     const sortedPosts = [...filteredPosts].sort((a, b) => {
@@ -41,7 +64,7 @@ export default function Blogs ({ posts = [] }) {
                 
                 <select
                     value={sortOrder}
-                    onChange={(e => setSortOrder(e.target.value))}
+                    onChange={(e) => setSortOrder(e.target.value)}
                     style={{
                         padding: "12px",
                         fontSize: "16px",
@@ -49,15 +72,26 @@ export default function Blogs ({ posts = [] }) {
                         border: "1px solid #ccc",
                         background: "#fff",
                     }}
-                >
-                    <option value="Recent">New</option>
-                    <option value="Oldest">Old</option>
+                    >
+                    <option value="New">New</option>
+                    <option value="Old">Old</option>
                 </select>
+
+                <label style={{ display: "flex", gap: "8px", alignItems: "center" }}>
+                    <input
+                        type="checkbox"
+                        checked={showFavorites}
+                        onChange={(e) => setFavoritesOnly(e.target.checked)}
+                    />
+                    Favorites
+                </label>
             </div>
 
             <ul style={{ listStyleType: "none", padding: 0 }}>
                 {sortedPosts.map((post) => {
                     const preview = (post.content || "").substring(0, 80);
+                    
+                    const isFav = favorites.includes(post.id);
 
                     return (
                         <li key={post.id} style={{ marginBottom: "25px" }}>
@@ -72,6 +106,20 @@ export default function Blogs ({ posts = [] }) {
                             >
                                 {post.title}
                             </Link>
+
+                            <button
+                                type="button"
+                                onClick={() => toggleFavorite(post.id)}
+                                style={{
+                                    padding: "6px 10px",
+                                    borderRadius: "6px",
+                                    border: "1px solid #ccc",
+                                    background: "#fff",
+                                    cursor: "pointer",
+                                }}
+                                >
+                                {isFav ? "Saved" : "Save"}
+                            </button>
 
                             <p style={{ marginTop: "8px" }}>
                                 {preview}
